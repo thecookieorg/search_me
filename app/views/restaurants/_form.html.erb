@@ -15,10 +15,6 @@
     <%= form.label :name %><br />
     <%= form.text_field :name, class: 'form-control' %>
   </div>
-  
-  <% @categories.each do |category| %>
-    <button class="btn btn-light"><i class="fas fa-plus"></i> <%= category.name %></button>
-  <% end %>
 
   <div class="form-group">
     <%= form.label :address %><br />
