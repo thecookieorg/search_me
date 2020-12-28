@@ -1,9 +1,33 @@
-<p id="notice"><%= notice %></p>
+<%= render 'admin_dashboards/navbar' %>
+  
+<div class="jumbotron text-center">
+  <h1><%= @category.name %></h1>
+  <%= link_to 'Update', edit_category_path(@category) %> | <%= link_to 'Back', categories_path, class: "btn btn-link" %>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @category.name %>
-</p>
-
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Assigned restaurants
+        </div>
+        
+        <div class="card-body">
+          <div data-reflex-root="all-restaurants">
+            <% @category.restaurants.each do |restaurant| %>
+              <div class="card mb-2">
+                <div class="card-body">
+                  <h5 class="card-title"><%= restaurant.name %></h5>
+                  <p class="card-text"><%= restaurant.about %></p>
+                  <p class="card-text"><%= restaurant.address %></p>
+                  <%= link_to "Open Profile", restaurant, class: 'btn btn-primary', target: '_blank' %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div><!-- end col-md-12-->
+  </div><!-- end row -->
+</div><!-- end container -->

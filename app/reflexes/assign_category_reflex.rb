@@ -1,11 +1,15 @@
 # frozen_string_literal: true
 
 class AssignCategoryReflex < ApplicationReflex
+  delegate :render, to: ApplicationController
+
   def create
     r_id = element.dataset["restaurant-id"]
     c_id = element.dataset["category-id"]
     
-    unless Group.where(restaurant_id: r_id, category_id: c_id).exists?
+    if Group.where(restaurant_id: r_id, category_id: c_id).exists?
+      morph "#already-exists-message", render(partial: "restaurants/category_already_exists")
+    else
       Group.create!(
         restaurant_id: r_id,
         category_id: c_id
