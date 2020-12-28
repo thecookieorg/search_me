@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="jumbotron text-center">
+    <h1>Update Category</h1>
+    <%= link_to 'Back', categories_path, class: "btn btn-link" %>
+  </div>
+
+  <div class="col-md-12">
+    <%= render 'form', category: @category %>
+  </div><!-- end col-md-12 -->
+</div><!-- end container -->
+
