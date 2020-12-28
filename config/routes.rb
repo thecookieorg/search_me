@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  
+  devise_for :admins
+  devise_for :users
   resources :restaurants
   resources :categories
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  authenticated :admin do
+    root 'admin_dashboards#index', as: :authenticated_admin
+  end
 
   root 'pages#index'
 end

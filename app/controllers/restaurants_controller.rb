@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :authenticate_admin!, except: :show
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
 
   # GET /restaurants
@@ -11,6 +12,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1.json
   def show
     @categories = Category.all
+    @assigned_categories = @restaurant.categories
   end
 
   # GET /restaurants/new

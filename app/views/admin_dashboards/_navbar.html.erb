@@ -1,0 +1,60 @@
+<section class="animated-container"></section>
+
+<nav class="navbar navbar-expand-lg navbar-light shadow-sm" style="background-color: #fff;">
+  <a href="/" class="navbar-brand">search<strong>ME</strong></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Platform Management
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h6 class="dropdown-header">Internal</h6>
+          <a class="dropdown-item" href="/categories">Categories</a>
+          <a class="dropdown-item" href="/restaurants">Restaurants</a>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">External</h6>
+          <a class="dropdown-item" href="/users">Users</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Platform Settings
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <h6 class="dropdown-header">Settings &amp; Sync</h6>
+          <%= link_to "Google Drive", '#', class: 'dropdown-item' %>
+          <%= link_to "Airtable", '#', class: 'dropdown-item' %>
+          <%= link_to "Unleashed", '#', class: 'dropdown-item' %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Manual Tasks</h6>
+          <%= link_to "Inventory Sync", '#', class: 'dropdown-item' %>
+          <%= link_to "Product Guid Sync", '#', class: 'dropdown-item' %>
+          <div class="dropdown-divider"></div>
+          <h6 class="dropdown-header">Terms &amp; Conditions</h6>
+          <a class="dropdown-item" href="/canadian_terms"><img src="https://res.cloudinary.com/manoylo/image/upload/v1588030355/Flags/rounded/canada.png" class="img-fluid" width="15" /> Canada</a>
+          <a class="dropdown-item" href="/united_states_terms"><img src="https://res.cloudinary.com/manoylo/image/upload/v1588030425/Flags/rounded/flag.png" class="img-fluid" width="15" /> United States</a>
+        </div>
+      </li>
+    </ul>
+    
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%= current_admin.email %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <%# link_to "Account settings", edit_user_registration_path, class: 'dropdown-item' %>
+          <!--<div class="dropdown-divider"></div>-->
+          <%= link_to('Sign Out', destroy_admin_session_path, method: :delete, class: 'dropdown-item') %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

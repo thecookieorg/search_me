@@ -59,3 +59,5 @@ gem "stimulus_reflex", "~> 3.4"
 gem "geocoder"
 gem 'pg_search'
 gem 'friendly_id', '~> 5.4.0'
+gem 'simple_form'
+gem 'devise'

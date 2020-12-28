@@ -1,33 +1,95 @@
-<p id="notice"><%= notice %></p>
+<% if admin_signed_in? %>
+  <%= render 'admin_dashboards/navbar' %>
+  
+  <div class="jumbotron text-center">
+    <h1><%= @restaurant.name %></h1>
+    <%= link_to 'Update', edit_restaurant_path(@restaurant) %> | <%= link_to 'Back', restaurants_path, class: "btn btn-link" %>
+  </div>
 
-<% @categories.each do |category| %>
-  <button class="btn btn-light"><i class="fas fa-plus"></i> <%= category.name %></button>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            Assign restaurant to a category
+          </div>
+          <div class="card-body">
+            <% @categories.each do |category| %>
+              <button 
+                class="btn btn-light" 
+                data-reflex="click->AssignCategoryReflex#create"
+                data-restaurant-id="<%= @restaurant.id %>"
+                data-category-id="<%= category.id %>"
+              ><i class="fas fa-plus"></i> <%= category.name %></button>
+            <% end %>
+
+            <hr />
+
+            <% @assigned_categories.each do |assigned_category| %>
+              <button 
+                class="btn btn-outline-danger btn-sm" 
+                data-reflex="click->AssignCategoryReflex#destroy"
+                data-restaurant-id="<%= @restaurant.id %>"
+                data-category-id="<%= assigned_category.id %>"
+              ><i class="fas fa-times"></i> <%= assigned_category.name %></button>
+            <% end %>
+          </div>
+        </div>
+      </div><!-- end col-md-12-->
+    </div><!-- end row -->
+    
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            Location
+          </div>
+          <div class="card-body">
+            <p class="lead"><%= @restaurant.address %></p>
+            <p><em><%= @restaurant.latitude %>, <%= @restaurant.longitude %></em></p>
+          </div>
+        </div>
+      </div><!-- end col-md-12-->
+    </div><!-- end row -->
+    
+    <div class="row mt-3">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            About
+          </div>
+          <div class="card-body">
+            <p class="lead"><%= @restaurant.about %></p>
+          </div>
+        </div>
+      </div><!-- end col-md-12-->
+    </div><!-- end row -->
+  </div><!-- end container -->
+
+<% else %>
+  <p>
+    <strong>Name:</strong>
+    <%= @restaurant.name %>
+  </p>
+
+  <p>
+    <strong>Address:</strong>
+    <%= @restaurant.address %>
+  </p>
+
+  <p>
+    <strong>Latitude:</strong>
+    <%= @restaurant.latitude %>
+  </p>
+
+  <p>
+    <strong>Longitude:</strong>
+    <%= @restaurant.longitude %>
+  </p>
+
+  <p>
+    <strong>About:</strong>
+    <%= @restaurant.about %>
+  </p>
 <% end %>
-
-<p>
-  <strong>Name:</strong>
-  <%= @restaurant.name %>
-</p>
-
-<p>
-  <strong>Address:</strong>
-  <%= @restaurant.address %>
-</p>
-
-<p>
-  <strong>Latitude:</strong>
-  <%= @restaurant.latitude %>
-</p>
-
-<p>
-  <strong>Longitude:</strong>
-  <%= @restaurant.longitude %>
-</p>
-
-<p>
-  <strong>About:</strong>
-  <%= @restaurant.about %>
-</p>
-
-<%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
-<%= link_to 'Back', restaurants_path %>
