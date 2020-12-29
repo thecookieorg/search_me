@@ -8,7 +8,7 @@ class AssignCategoryReflex < ApplicationReflex
     c_id = element.dataset["category-id"]
     
     if Group.where(restaurant_id: r_id, category_id: c_id).exists?
-      morph "#already-exists-message", render(partial: "restaurants/category_already_exists")
+      morph "#already-exists-message", render(Global::AlertComponent.new(text: 'Selected category is already assigned', type: :warning))
     else
       Group.create!(
         restaurant_id: r_id,

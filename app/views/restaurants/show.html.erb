@@ -8,7 +8,7 @@
 
   <div class="container">
     <div id="already-exists-message"></div>
-    
+
     <div class="row">
       <div class="col-md-12">
         <div class="card">
@@ -27,14 +27,7 @@
 
             <hr />
 
-            <% @assigned_categories.each do |assigned_category| %>
-              <button 
-                class="btn btn-outline-danger btn-sm" 
-                data-reflex="click->AssignCategoryReflex#destroy"
-                data-restaurant-id="<%= @restaurant.id %>"
-                data-category-id="<%= assigned_category.id %>"
-              ><i class="fas fa-times"></i> <%= assigned_category.name %></button>
-            <% end %>
+            <%= render(Restaurants::Buttons::AssignedCategoriesComponent.with_collection(@assigned_categories, restaurant_id: @restaurant.id)) %>
           </div>
         </div>
       </div><!-- end col-md-12-->

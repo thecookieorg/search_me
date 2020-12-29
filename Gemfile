@@ -61,3 +61,4 @@ gem 'pg_search'
 gem 'friendly_id', '~> 5.4.0'
 gem 'simple_form'
 gem 'devise'
+gem "view_component", require: "view_component/engine"

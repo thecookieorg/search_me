@@ -1,0 +1,8 @@
+<div class="card mb-2" id="<%= dom_id(@restaurant) %>">
+  <div class="card-body">
+    <h5 class="card-title"><%= @restaurant.name %></h5>
+    <p class="card-text"><%= @restaurant.about %></p>
+    <p class="card-text"><%= @restaurant.address %></p>
+    <%= link_to "Open Profile", @restaurant, class: 'btn btn-primary', target: '_blank' %>
+  </div>
+</div>

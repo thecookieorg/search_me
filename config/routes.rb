@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :restaurants
   resources :categories
 
+  resources :search, only: :create
+
   authenticated :admin do
     root 'admin_dashboards#index', as: :authenticated_admin
   end

@@ -1,0 +1,7 @@
+<button
+  id="<%= dom_id(@assigned_category) %>"
+  class="btn btn-outline-danger btn-sm mr-1" 
+  data-reflex="click->AssignCategoryReflex#destroy"
+  data-restaurant-id="<%= @restaurant_id %>"
+  data-category-id="<%= @assigned_category.id %>"
+><i class="fas fa-times"></i> <%= @assigned_category.name %></button>
