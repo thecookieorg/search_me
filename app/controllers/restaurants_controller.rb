@@ -6,6 +6,7 @@ class RestaurantsController < ApplicationController
   # GET /restaurants.json
   def index
     @restaurants = Restaurant.all
+    @restaurant = Restaurant.new
   end
 
   # GET /restaurants/1
@@ -34,6 +35,7 @@ class RestaurantsController < ApplicationController
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully created.' }
         format.json { render :show, status: :created, location: @restaurant }
       else
+        format.turbo_stream { render turbo_stream: turbo_stream.replace(@restaurant, partial: "restaurants/form", locals: { restaurant: @restaurant}) }
         format.html { render :new }
         format.json { render json: @restaurant.errors, status: :unprocessable_entity }
       end

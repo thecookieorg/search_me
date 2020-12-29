@@ -8,7 +8,9 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <%= render 'form', restaurant: @restaurant %>
+      <%= turbo_frame_tag dom_id(@restaurant) do %>
+        <%= render 'form', restaurant: @restaurant %>
+      <% end %>
     </div><!-- end col-md-12 -->
   </div><!-- end row -->
 </div><!-- end container -->
