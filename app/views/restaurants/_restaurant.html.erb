@@ -1,2 +1,16 @@
-<%# restaurant.name %>
-MMMM
+<%= turbo_frame_tag dom_id(restaurant) do %>
+  <div class="card mb-2" id="<%= dom_id(restaurant) %>">
+    <div class="card-body">
+      <h5 class="card-title"><%= restaurant.name %></h5>
+      <p class="card-text"><%= restaurant.about %></p>
+      <p class="card-text">
+        <%= restaurant.address %><br />
+        <em><%= restaurant.latitude %>, <%= restaurant.longitude %></em>
+      </p>
+      <%= link_to "Assign Categories", restaurant, class: 'btn btn-primary' %>
+      <%= link_to "Update Restaurant", edit_restaurant_path(restaurant), class: 'btn btn-warning' %>
+      <%= link_to "Delete Restaurant", restaurant, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
+      
+    </div>
+  </div>
+<% end %>
