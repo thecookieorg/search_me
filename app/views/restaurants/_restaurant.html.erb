@@ -7,10 +7,18 @@
         <%= restaurant.address %><br />
         <em><%= restaurant.latitude %>, <%= restaurant.longitude %></em>
       </p>
-      <%= link_to "Assign Categories", restaurant, class: 'btn btn-primary' %>
+
+      <div class="mb-2">
+        <% restaurant.categories.each do |category| %>
+          <button class="btn btn-light btn-sm mr-1"><%= category.name %></button>
+        <% end %>
+      </div>
+
+      <hr />
+      
+      <%= link_to "Assign Categories", restaurant, class: 'btn btn-primary', 'data-turbo-frame': :_top %>
       <%= link_to "Update Restaurant", edit_restaurant_path(restaurant), class: 'btn btn-warning' %>
       <%= link_to "Delete Restaurant", restaurant, class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %>
-      
     </div>
   </div>
 <% end %>

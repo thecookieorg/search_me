@@ -1,9 +1,21 @@
+<div role="alert" aria-live="assertive" aria-atomic="true" class="toast" data-autohide="false" style="width: 100%;">
+  <div class="toast-header">
+    <strong class="mr-auto">Toast</strong>
+    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="toast-body">
+    Hello, world! This is a toast message.
+  </div>
+</div>
 <% @restaurants.each do |restaurant |%>
   <div class="card mb-2" id="<%= dom_id(restaurant) %>">
     <div class="card-body">
       <h5 class="card-title"><%= restaurant.name %></h5>
       <p class="card-text"><%= restaurant.about %></p>
-      <p class="card-text"><%= restaurant.address %></p>
+      <!--<p data-restaurant-id="<%# restaurant.id %>" data-action="mouseenter->toast#showToast" data-reflex="mouseenter->ListingReflex#show_map" class="card-text"><%# restaurant.address %></p>-->
+      <p data-restaurant-id="<%= restaurant.id %>" data-action="mouseenter->toast#showToast" class="card-text"><%= restaurant.address %></p>
       <%= link_to "Open Profile", restaurant, class: 'btn btn-primary', target: '_blank' %>
     </div>
   </div>

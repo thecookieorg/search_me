@@ -1,1 +1,2 @@
-<%= link_to @item.name, @item, class: 'btn btn-link' %>
+<%# link_to @item.name, @item, class: 'btn btn-link', data: { 'category-target': @item.id } %>
+<button class='btn btn-link' data-action="search#allForCategory" data-target="search.category" data-identifier="<%= @item.id %>"><%= @item.name %></button>

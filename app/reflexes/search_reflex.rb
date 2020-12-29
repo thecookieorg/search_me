@@ -9,4 +9,13 @@ class SearchReflex < ApplicationReflex
     morph "#results", render(Restaurants::SearchListingComponent.new(restaurants: restaurants))
     morph "#results-counter", render(Global::AlertComponent.new(text: "#{restaurants.size} restaurants found", type: :success))
   end
+  
+  def perform_by_category_id(category_id=nil)
+    return if category_id.nil?
+
+    restaurants = Category.find(category_id).restaurants
+
+    morph "#results", render(Restaurants::SearchListingComponent.new(restaurants: restaurants))
+    morph "#results-counter", render(Global::AlertComponent.new(text: "#{restaurants.size} restaurants found", type: :success))
+  end
 end

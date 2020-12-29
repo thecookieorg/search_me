@@ -16,7 +16,7 @@ export default class extends ApplicationController {
    * call super if you intend to do anything else when this controller connects.
   */
 
- static targets = [ "query" ]
+ static targets = [ "query", "category" ]
 
   connect () {
     super.connect()
@@ -31,6 +31,18 @@ export default class extends ApplicationController {
     let query = this.queryTarget.value
 
     this.stimulate('SearchReflex#perform', query)
+  }
+
+  allForCategory(event) {
+    event.preventDefault();
+    // const categoryid = this.categoryTarget.dataset
+    // const selectionValue = this.currentTarget//.dataset.value
+    // const selectionValue = this.currentTarget//.dataset.value
+    const selectionIdentifier = event.currentTarget.dataset.identifier
+
+    console.log(selectionIdentifier)
+    
+    this.stimulate('SearchReflex#perform_by_category_id', selectionIdentifier)
   }
 
   /* Reflex specific lifecycle methods.
